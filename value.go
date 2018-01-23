@@ -6,15 +6,14 @@ import (
 	"strings"
 )
 
-
 // A value instance provides an API over generic data.  The functions
 // At() and In() push new Values onto the end of the chain, drilling
 // down to the desired value.
 type Value struct {
-	key interface{}
-	data interface{}
+	key      interface{}
+	data     interface{}
 	previous *Value
-	err error
+	err      error
 }
 
 // Creates a new instance with the given 'backing' value.
@@ -90,9 +89,9 @@ func (v *Value) Len() int {
 // Saves the index, and loads the value for that index as the backing store
 // if possible.  If the index doesn't exist the new data will be nil.
 func (v *Value) In(n int) *Value {
-	return &Value {
-		key: n,
-		data: v.to(n),
+	return &Value{
+		key:      n,
+		data:     v.to(n),
 		previous: v,
 	}
 }
@@ -100,9 +99,9 @@ func (v *Value) In(n int) *Value {
 // Saves the key, and loads the value for that key from the backing store
 // if possible.  If the key doesn't exist the new Data/value will be nil.
 func (v *Value) At(key string) *Value {
-	return &Value {
-		key: key,
-		data: v.val(key),
+	return &Value{
+		key:      key,
+		data:     v.val(key),
 		previous: v,
 	}
 }

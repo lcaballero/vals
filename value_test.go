@@ -1,9 +1,9 @@
 package vals
-   
+
 import (
+	"fmt"
 	. "github.com/smartystreets/goconvey/convey"
 	"testing"
-	"fmt"
 )
 
 func withArray() map[string]interface{} {
@@ -41,7 +41,7 @@ func TestValue(t *testing.T) {
 		m := singleLevelMap()
 		val := New(m)
 
-		for k,v := range m {
+		for k, v := range m {
 			So(val.At(k).AsString(), ShouldEqual, v)
 		}
 	})
@@ -51,5 +51,3 @@ func TestValue(t *testing.T) {
 		So(true, ShouldEqual, true)
 	})
 }
-
-
